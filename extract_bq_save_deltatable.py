@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 
 conf = SparkConf()
 
-conf.set("spark.jars.packages", "io.delta:delta-core:1.0.0")
+conf.set("spark.jars.packages", "io.delta:delta-iceberg:3.0.0")
 conf.set("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
 conf.set(
     "spark.sql.catalog.spark_catalog",
@@ -34,7 +34,7 @@ taxi_driver_report = taxi_filtered.groupBy("vendor_id").agg(
 (
     taxi_driver_report.write.mode("overwrite")
     .format("delta")
-    .save("gs://bq_deltatable/taxi_driver_report")
+    .save("gs://teste_datalake/taxi_driver_report")
 )
 
 # print data
