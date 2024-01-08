@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 conf = SparkConf()
 
 conf.set("spark.jars.packages", "io.delta:delta-iceberg:3.0.0")
+conf.set("spark.jars.packages", "com.google.cloud.spark:spark-bigquery-connector-common:0.34.0")
 conf.set("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
 conf.set(
     "spark.sql.catalog.spark_catalog",
